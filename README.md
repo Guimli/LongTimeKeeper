@@ -65,6 +65,42 @@ JLCPCB is the cheapest option, but the low price is mostly lost if you order onl
 - **Battery:** use the Tadiran **SL-850/S** long-life cell (SL-800 series), not a standard-series cell such as the TL-5902. Its very low self-discharge rate suits a back-up that only draws a few µA for many years. The footprint and 3D model use the 1/2 AA (ER14250) size. Use a 3.6 V **primary** lithium cell. Do **not** use a rechargeable 3.7 V Li-ion 14250 cell, because its voltage is too high for the VBAT input.
 - **DIP legs:** standard square header pins match the 3D model. Turned (machined) pins are gentler on the original socket.
 
+## Battery life estimate
+
+The cell supplies the M48T58Y only while the host is switched off (VCC below the switchover voltage V<sub>SO</sub>). When the host is on, the chip runs from VCC and draws no current from the cell.
+
+**Inputs**
+
+| Parameter | Value | Source |
+|---|---|---|
+| SL-850 nominal capacity | 1.2 Ah (1 200 mAh) | Tadiran SL-850 datasheet |
+| SL-800 (XOL) self-discharge at room temperature | ≈ 0.7 % per year (typical) → ≈ 8.4 mAh/year; ≤ 1 % per year (max.) → ≤ 12 mAh/year | Tadiran XOL series page / Tadiran catalogue |
+| XOL rated operating life | up to **40 years** | Tadiran XOL series page |
+| M48T58 battery current I<sub>BAT</sub> = I<sub>ARRAY</sub> + I<sub>CLOCK</sub> (64 Kbit, 4T cell), typical | 40 + 497 = **537 nA at 20 °C**; 511 + 619 = **1 130 nA at 70 °C** | ST AN1012, Table 3 |
+
+The calculation follows the AN1012 formula, with the cell's self-discharge added to the battery current:
+
+life (years) = capacity ÷ (8 760 h × (1 − VCC duty cycle) × I<sub>BAT</sub> + yearly self-discharge)
+
+With a VCC duty cycle of 0 % (host always off), the M48T58Y draws 537 nA × 8 760 h ≈ **4.7 mAh/year** at 20 °C and 1 130 nA × 8 760 h ≈ **9.9 mAh/year** at 70 °C.
+
+**Estimate** (host always off, 100 % battery backup)
+
+| Temperature | I<sub>BAT</sub> | Typical self-discharge (0.7 %/year) | Worst-case self-discharge (1 %/year) |
+|---|---:|---:|---:|
+| 20 °C | 537 nA | 4.7 + 8.4 = 13.1 mAh/year → ≈ 92 years | 4.7 + 12 = 16.7 mAh/year → ≈ 72 years |
+| 70 °C ¹ | 1 130 nA | 9.9 + 8.4 = 18.3 mAh/year → ≈ 66 years | 9.9 + 12 = 21.9 mAh/year → ≈ 55 years |
+
+¹ The self-discharge figures are specified at room temperature. At 70 °C the cell's real self-discharge is higher, so this row overestimates the life.
+
+**Conclusion.** Even with the host always off, the calculated life is far beyond the cell's rated life. The practical limit is therefore the cell's rated life, not its capacity: Tadiran rates the XOL series for **up to 40 years** of operation. Expect **about 40 years** at room temperature. For comparison, AN1012 (Table 13) gives the original M48T58 with its internal 48 mAh cell about 9.4 years (typical) at 20 °C and 4.8 years at 70 °C when the host is always off.
+
+Factors that shorten this life:
+- **Temperature.** Both the M48T58Y current and the cell's self-discharge rise with temperature, for example inside a closed, warm cabinet.
+- **Leakage.** Flux residue or humidity on the board can create leakage paths. Clean the boards after soldering.
+
+**Monitoring.** At each power-up, the M48T58Y sets its **battery low flag** (BL, bit D6 of register 1FFDh) when the cell is below about 2.5 V. Li-SOCl₂ cells keep a flat voltage of about 3.6 V almost until they are empty, so treat this flag as the signal to replace the SL-850.
+
 ## Assembly hints
 
 1. Solder Y1 and U7 (SOH28) on the bottom board. Do **not** wave-solder the SOH28 package (see the ST datasheet).
@@ -76,6 +112,7 @@ JLCPCB is the cheapest option, but the low price is mostly lost if you order onl
 ## Datasheets
 
 - [M48T58 / M48T58Y – STMicroelectronics](Datasheet/M48T58.pdf)
+- [AN1012 – Predicting the battery life and data retention period of NVRAMs and serial RTCs – STMicroelectronics](Datasheet/AN1012.pdf)
 - [Keystone 108 battery holder](Datasheet/108-745412.pdf)
 - [Keystone 108C cover](Datasheet/08C-745621.pdf)
 - [Tadiran SL-850 (XOL – extended operating life)](Datasheet/tadiran_sl-850.pdf). This page is taken from the Tadiran Lithium Batteries Product Data Catalogue and also shows the SL-861.
