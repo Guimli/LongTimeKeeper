@@ -1,0 +1,190 @@
+(footprint "108-745412"
+	(version 20260206)
+	(generator "pcbnew")
+	(generator_version "10.0")
+	(layer "F.Cu")
+	(descr "28-lead though-hole mounted DIP package, row spacing 15.24 mm (600 mils), Socket")
+	(tags "THT DIP DIL PDIP 2.54mm 15.24mm 600mil Socket")
+	(property "Reference" "BT1"
+		(at 0 -18.84 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "87399db2-4a21-4fb3-a00d-753fbda6d167")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Value" "3.6V"
+		(at 0 17.78 0)
+		(layer "F.Fab")
+		(uuid "6f99d728-add9-4585-b0a5-fc26d9ea7092")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Datasheet" ""
+		(at -7.62 -16.51 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "cb234a38-bddb-4d31-80ff-428c6e191170")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Description" "Single-cell battery"
+		(at -7.62 -16.51 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "207f7908-2618-4644-93e3-ba03f7c1288c")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Sim.Device" "V"
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "4b2bc37b-075a-4ebe-b7a6-c7ee71134257")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Sim.Type" "DC"
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "5bd6d87f-d191-482d-acaa-9b9fe7c0b58e")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Sim.Pins" "1=+ 2=-"
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "4b75c2f8-f2ab-4c1a-a8e4-c9f5627ca18f")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(sheetname "/")
+	(sheetfile "TimekeeperBat.kicad_sch")
+	(attr through_hole)
+	(duplicate_pad_numbers_are_jumpers no)
+	(fp_text user "${REFERENCE}"
+		(at 0 0 0)
+		(layer "F.Fab")
+		(uuid "5bd9a170-13a2-41e7-9c80-ac4ededf6c56")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(pad "" np_thru_hole circle
+		(at 7.09 -14.73)
+		(size 2.38 2.38)
+		(drill 2.38)
+		(layers "*.Cu" "*.Mask")
+		(uuid "1fc30a30-44b3-468e-8489-1c4bd1d12cea")
+	)
+	(pad "1" thru_hole circle
+		(at 0 -14.73)
+		(size 2.2 2.2)
+		(drill 1.19)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(teardrops
+			(best_length_ratio 0.5)
+			(max_length 1)
+			(best_width_ratio 1)
+			(max_width 2)
+			(curved_edges yes)
+			(filter_ratio 0.9)
+			(enabled yes)
+			(allow_two_segments yes)
+			(prefer_zone_connections yes)
+		)
+		(uuid "11db5cee-3464-4e1c-b304-9c23e14ecc5e")
+	)
+	(pad "2" thru_hole circle
+		(at 0 14.73)
+		(size 2.2 2.2)
+		(drill 1.19)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(teardrops
+			(best_length_ratio 0.5)
+			(max_length 1)
+			(best_width_ratio 1)
+			(max_width 2)
+			(curved_edges yes)
+			(filter_ratio 0.9)
+			(enabled yes)
+			(allow_two_segments yes)
+			(prefer_zone_connections yes)
+		)
+		(uuid "bcffbbfd-f422-4d37-b79f-b0fb1e32b65b")
+	)
+	(embedded_fonts no)
+	(model "${KIPRJMOD}/3D/108.stp"
+		(offset
+			(xyz 0 0 0)
+		)
+		(scale
+			(xyz 1 1 1)
+		)
+		(rotate
+			(xyz -90 0 90)
+		)
+	)
+	(model "${KIPRJMOD}/3D/108C.stp"
+		(offset
+			(xyz 0 0 16)
+		)
+		(scale
+			(xyz 1 1 1)
+		)
+		(rotate
+			(xyz -90 0 -90)
+		)
+	)
+	(model "${KIPRJMOD}/3D/ER14250.stp"
+		(offset
+			(xyz 0 -12.5 8.5)
+		)
+		(scale
+			(xyz 1 1 1)
+		)
+		(rotate
+			(xyz 90 0 0)
+		)
+	)
+)
