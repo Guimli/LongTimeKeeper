@@ -22,24 +22,6 @@ The adapter is a stack of two PCBs:
 
 Signal mapping: every DIP-28 pin of the original package (A0–A12, DQ0–DQ7, Ē1, E2, Ḡ, W̄, FT, VCC, VSS) is routed 1:1 to the matching pin of the SOH28 device, so the host system sees an unmodified M48T58. Both boards are 2-layer, 1.6 mm FR-4, and fit within the original DIP-28 footprint (about 18.4 × 36.3 mm).
 
-> ⚠️ The M48T58Y has a 4.2–4.5 V power-fail threshold, while the M48T58 has 4.5–4.75 V. Both run on 4.5–5.5 V and are interchangeable in nearly every 5 V system. Check the host's requirements if it depends on the exact power-fail threshold.
-
-## Repository layout
-
-```
-LongTimeKeeper_Bottom/   KiCad project – DIP-28 adapter board (M48T58Y + crystal)
-  Additional.kicad_sym   Custom symbol M48T58 (DIP + SOH28 with X1/X2/BAT+/BAT-)
-  Additional.pretty/     Custom footprints (SOH-28, DIP-28 socket pins, battery link)
-  3D/                    STEP models (M48T58Y-70MH1, assembled stack)
-LongTimeKeeper_Up/       KiCad project – battery board (Keystone 108 holder)
-  Additional.pretty/     Footprints for the Keystone 108 and the battery link
-  3D/                    STEP models (Keystone 108, 108C, ER14250 cell)
-Gerber/                  Manufacturing files (Gerber + drill + job) for both boards,
-                         also zipped: LongTimekeeper_Bottom_Gerber.zip,
-                         TimekeeperBat_Up_Gerber.zip
-Datasheet/               M48T58 datasheet, Keystone 108 / 108C, Tadiran TL-5902 and SL-850
-Images/                  3D render
-```
 
 The projects were created with **KiCad 10**.
 
