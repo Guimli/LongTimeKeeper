@@ -117,3 +117,13 @@ Factors that shorten this life:
 - [Keystone 108C cover](Datasheet/08C-745621.pdf)
 - [Tadiran SL-850 (XOL – extended operating life)](Datasheet/tadiran_sl-850.pdf). This page is taken from the Tadiran Lithium Batteries Product Data Catalogue and also shows the SL-861.
 - [Tadiran TL-5902](Datasheet/tadiran_tl5902-1214159.pdf). This is the standard-series datasheet, kept for reference.
+
+## License
+
+Copyright © 2026 Guimli.
+
+This hardware design is licensed under the **CERN Open Hardware Licence Version 2 – Strongly Reciprocal** ([CERN-OHL-S-2.0](LICENSE)).
+
+You may redistribute and modify this source and make products using it under the terms of the CERN-OHL-S v2. This source is distributed WITHOUT ANY EXPRESS OR IMPLIED WARRANTY, INCLUDING OF MERCHANTABILITY, SATISFACTORY QUALITY AND FITNESS FOR A PARTICULAR PURPOSE. See the CERN-OHL-S v2 for applicable conditions.
+
+Third-party documents in `Datasheet/` and 3D models from manufacturers remain the property of their respective owners and are not covered by this licence.
